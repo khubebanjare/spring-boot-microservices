@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "f8827cf4-1f41-4d12-a9dd-b0c4caca6fc0",
+		"name": "address-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8083/address/addresses",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"addressId\": 1011,\r\n    \"street\": \"Word No 11\",\r\n    \"line1\": \"Village - Khapri, P.O. - Shikari Kesli\",\r\n    \"line2\": \"Block - Simga, Dist - Baloda Bazaar\",\r\n    \"markedLocation\": \"Bhatapara Suhela main road\",\r\n    \"city\": \"Raipur\",\r\n    \"pinCode\": 493118,\r\n    \"state\": \"Chhattisgarh\",\r\n    \"country\": \"India\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/address-app/address/api/addresses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"address-app",
+						"address",
+						"api",
+						"addresses"
+					]
+				},
+				"description": "It is creating new Address Details based on we have provided the details of address"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8083/address/addresses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/address-app/address/api/addresses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"address-app",
+						"address",
+						"api",
+						"addresses"
+					]
+				},
+				"description": "It will fetch all address details"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8083/address/addresses/1011",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/address-app/address/api/addresses/1011",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"address-app",
+						"address",
+						"api",
+						"addresses",
+						"1011"
+					]
+				},
+				"description": "It will fetches details of address thas has provied by id"
+			},
+			"response": []
+		}
+	]
+}
