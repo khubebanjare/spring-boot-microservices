@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "83bba991-9e7b-4657-8cd5-dd4aaeda8b61",
+		"name": "shopping-cart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8081/api/getAllProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/getAllProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"getAllProducts"
+					]
+				},
+				"description": "Get all Products"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/deleteProduct/5",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/deleteProduct/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"deleteProduct",
+						"4"
+					]
+				},
+				"description": "Delete Product from Cart"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/deleteAllShoppingcart",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/deleteAllShoppingcart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"deleteAllShoppingcart"
+					]
+				},
+				"description": "Empty Cart"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/productCount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/productCount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"productCount"
+					]
+				},
+				"description": "Product count from Cart"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/products/category?category=Electronics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/products/category?category=Life Style",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"products",
+						"category"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "Life Style"
+						}
+					]
+				},
+				"description": "Category of Products"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/order/orders/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\": 1,\r\n    \"refId\": \"SHIRT12\",\r\n    \"orderName\": \"Casual Shirt\",\r\n    \"shoppingCart\": [\r\n        {\r\n            \"shoppingCartId\": 4,\r\n            \"title\": \"Mens Casual Slim Fit\",\r\n            \"price\": 15.99,\r\n            \"description\": \"The color could be slightly different between on the screen and in practice.\",\r\n            \"image\": \"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/order/orders/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"order",
+						"orders",
+						"create"
+					]
+				},
+				"description": "Carte a Order"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/order/orders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/order/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"order",
+						"orders"
+					]
+				},
+				"description": "List of Orders"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/order/orders/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/order/orders/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"order",
+						"orders",
+						"1"
+					]
+				},
+				"description": "Get Order by Order Id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/increaseQuantity/4?quantity=20",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/increaseQuantity/4?quantity=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"increaseQuantity",
+						"4"
+					],
+					"query": [
+						{
+							"key": "quantity",
+							"value": "5"
+						}
+					]
+				},
+				"description": "increase product quantity of shopping cart"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/reduceQuantity/4?quantity=21",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/reduceQuantity/4?quantity=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"reduceQuantity",
+						"4"
+					],
+					"query": [
+						{
+							"key": "quantity",
+							"value": "1"
+						}
+					]
+				},
+				"description": "decrease product quantity of shopping cart"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/addProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"shoppingCartId\": 4,\r\n    \"title\": \"Mens Casual Slim Fit\",\r\n    \"price\": 15.99,\r\n    \"description\": \"The color could be slightly different between on the screen and in practice.\",\r\n    \"availableQuantity\": 10,\r\n    \"image\": \"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg\",\r\n    \"category\": \"Life Style\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/addProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"addProduct"
+					]
+				},
+				"description": "We are adding product in Shopping Cart"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/getAllShoppingProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/getAllShoppingProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"getAllShoppingProducts"
+					]
+				},
+				"description": "We are getting product from Shopping Cart"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/addProductsTable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"productId\": 4,\r\n        \"title\": \"Mens Casual Slim Fit\",\r\n        \"price\": 15.99,\r\n        \"description\": \"The color could be slightly different between on the screen and in practice.\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg\",\r\n        \"category\": \"Life Style\"\r\n    },\r\n    {\r\n        \"productId\": 5,\r\n        \"title\": \"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet\",\r\n        \"price\": 695,\r\n        \"description\": \"From our Legends Collections\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg\",\r\n        \"category\": \"Jewellery\"\r\n    },\r\n    {\r\n        \"productId\": 6,\r\n        \"title\": \"Solid Gold Petite Micropave \",\r\n        \"price\": 168,\r\n        \"description\": \"Satisfaction Guaranteed. Return or exchange any order within 30 days.\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg\",\r\n        \"category\": \"Jewellery\"\r\n    },\r\n    {\r\n        \"productId\": 7,\r\n        \"title\": \"White Gold Plated Princess\",\r\n        \"price\": 9.99,\r\n        \"description\": \"Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her.\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg\",\r\n        \"category\": \"Jewellery\"\r\n    },\r\n    {\r\n        \"productId\": 8,\r\n        \"title\": \"Pierced Owl Rose Gold Plated Stainless Steel Double\",\r\n        \"price\": 10.99,\r\n        \"description\": \"Rose Gold Plated Double Flared Tunnel Plug Earrings.\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg\",\r\n        \"category\": \"Jewellery\"\r\n    },\r\n    {\r\n        \"productId\": 9,\r\n        \"title\": \"WD 2TB Elements Portable External Hard Drive - USB 3.0 \",\r\n        \"price\": 64,\r\n        \"description\": \"USB 3.0 and USB 2.0 Compatibility Fast data transfers\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg\",\r\n        \"category\": \"Electronics\"\r\n    },\r\n    {\r\n        \"productId\": 10,\r\n        \"title\": \"SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s\",\r\n        \"price\": 110,\r\n        \"description\": \"Easy upgrade for faster boot up, shutdown, application load and response\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg\",\r\n        \"category\": \"Electronics\"\r\n    },\r\n    {\r\n        \"productId\": 11,\r\n        \"title\": \"Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5\",\r\n        \"price\": 109,\r\n        \"description\": \"3D NAND flash are applied to deliver high transfer\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg\",\r\n        \"category\": \"Electronics\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/addProductsTable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"addProductsTable"
+					]
+				},
+				"description": "We adding Products in Product Table or in the Warehouse "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/addProducts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"shoppingCartId\": 4,\r\n        \"title\": \"Mens Casual Slim Fit\",\r\n        \"price\": 15.99,\r\n        \"description\": \"The color could be slightly different between on the screen and in practice.\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg\",\r\n        \"category\": \"Life Style\"\r\n    },\r\n    {\r\n        \"shoppingCartId\": 5,\r\n        \"title\": \"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet\",\r\n        \"price\": 695,\r\n        \"description\": \"From our Legends Collections\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg\",\r\n        \"category\": \"Jewellery\"\r\n    },\r\n    {\r\n        \"shoppingCartId\": 6,\r\n        \"title\": \"Solid Gold Petite Micropave \",\r\n        \"price\": 168,\r\n        \"description\": \"Satisfaction Guaranteed. Return or exchange any order within 30 days.\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg\",\r\n        \"category\": \"Jewellery\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/addProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"addProducts"
+					]
+				},
+				"description": "Add Multipal orders in Shopping Cart"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/order/orders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"shoppingCartId\": 4,\r\n        \"title\": \"Mens Casual Slim Fit\",\r\n        \"price\": 15.99,\r\n        \"description\": \"The color could be slightly different between on the screen and in practice.\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg\",\r\n        \"category\": \"Life Style\"\r\n    },\r\n    {\r\n        \"shoppingCartId\": 5,\r\n        \"title\": \"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet\",\r\n        \"price\": 695,\r\n        \"description\": \"From our Legends Collections\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg\",\r\n        \"category\": \"Jewellery\"\r\n    },\r\n    {\r\n        \"shoppingCartId\": 6,\r\n        \"title\": \"Solid Gold Petite Micropave \",\r\n        \"price\": 168,\r\n        \"description\": \"Satisfaction Guaranteed. Return or exchange any order within 30 days.\",\r\n        \"availableQuantity\": 20,\r\n        \"image\": \"https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg\",\r\n        \"category\": \"Jewellery\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/order/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"order",
+						"orders"
+					]
+				},
+				"description": "create multipal orders"
+			},
+			"response": []
+		}
+	]
+}
