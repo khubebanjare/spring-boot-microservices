@@ -6,6 +6,7 @@ import com.khube.main.exception.EmployeeNotFoundException;
 import com.khube.main.feignclient.AddressClient;
 import com.khube.main.helper.EmployeeHelper;
 import com.khube.main.repository.EmployeeRepository;
+import com.khube.main.request.EmployeeRequest;
 import com.khube.main.response.AddressResponse;
 import com.khube.main.response.EmployeeResponse;
 import com.khube.main.service.EmployeeService;
@@ -23,18 +24,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
     @Autowired
     private EmployeeResponse employeeResponse;
+    @Autowired
+    private EmployeeRequest employeeRequest;
 
     @Autowired
     private AddressClient addressClient;
 
     @Override
-    public EmployeeResponse saveEmployee(Employee employee) {
+    public EmployeeRequest saveEmployee(Employee employee) {
         Employee newEmployee = employeeRepository.save(employee);
         if(newEmployee != null)
-            employeeResponse = EmployeeHelper.setEmployeeDetails(newEmployee);
+            employeeRequest = EmployeeHelper.setEmployeeDetailsForRequest(newEmployee);
         else
             throw new EmployeeIsEmpty("Employee is Empty Please Insert employee data!!!");
-        return employeeResponse;
+        return employeeRequest;
     }
 
     @Override
@@ -43,7 +46,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<EmployeeResponse> employeeResponses = new ArrayList<EmployeeResponse>();
         if(!employees.isEmpty()) {
             employees.forEach(employee -> {
-                EmployeeResponse employeeResponse = EmployeeHelper.setEmployeeDetailsForMultiObject(employee);
+                EmployeeResponse employeeResponse = EmployeeHelper.setEmployeeDetailsForMultiObjectResponse(employee);
                 employeeResponses.add(employeeResponse);
             });
         }
@@ -56,7 +59,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Optional<EmployeeResponse> getEmployeeByEmpId(Integer empId) {
         Employee newEmployee = employeeRepository.findById(empId).get();
         if(newEmployee != null) {
-           EmployeeResponse employeeResponse = EmployeeHelper.setEmployeeDetails(newEmployee);
+           EmployeeResponse employeeResponse = EmployeeHelper.setEmployeeDetailsForResponse(newEmployee);
             AddressResponse addressResponse = addressClient.findAddressByEmpId(empId);
             employeeResponse.setAddressResponse(addressResponse);
             Optional<EmployeeResponse> employeeResponseOptional = Optional.of(employeeResponse);

@@ -1,6 +1,7 @@
 package com.khube.main.controller;
 
 import com.khube.main.entity.Employee;
+import com.khube.main.request.EmployeeRequest;
 import com.khube.main.response.EmployeeResponse;
 import com.khube.main.service.EmployeeService;
 import com.khube.main.util.SwaggerConfigValue;
@@ -34,9 +35,9 @@ public class EmployeeController {
 
     @ApiOperation(value = SwaggerConfigValue.VALUE1, response = EmployeeResponse.class)
     @PostMapping(value = "/employees")
-    public ResponseEntity<EmployeeResponse> saveEmployee(@RequestBody Employee employee){
-        EmployeeResponse employeeResponse = employeeService.saveEmployee(employee);
-        return new ResponseEntity<>(employeeResponse, HttpStatus.CREATED);
+    public ResponseEntity<EmployeeRequest> saveEmployee(@RequestBody Employee employee){
+        EmployeeRequest employeeRequest = employeeService.saveEmployee(employee);
+        return new ResponseEntity<EmployeeRequest>(employeeRequest, HttpStatus.CREATED);
     }
 
     @ApiOperation(value = SwaggerConfigValue.VALUE2, response = List.class)
