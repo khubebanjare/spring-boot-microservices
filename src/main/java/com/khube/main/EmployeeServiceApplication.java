@@ -2,14 +2,12 @@ package com.khube.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@ComponentScan(basePackages = "com.khube.main")
+@EnableFeignClients
 @SpringBootApplication
 public class EmployeeServiceApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeServiceApplication.class, args);
 	}
-
 }

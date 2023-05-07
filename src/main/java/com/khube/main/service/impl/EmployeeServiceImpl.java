@@ -3,8 +3,10 @@ package com.khube.main.service.impl;
 import com.khube.main.entity.Employee;
 import com.khube.main.exception.EmployeeIsEmpty;
 import com.khube.main.exception.EmployeeNotFoundException;
+import com.khube.main.feignclient.AddressClient;
 import com.khube.main.helper.EmployeeHelper;
 import com.khube.main.repository.EmployeeRepository;
+import com.khube.main.response.AddressResponse;
 import com.khube.main.response.EmployeeResponse;
 import com.khube.main.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
-
     @Autowired
     private EmployeeResponse employeeResponse;
+
+    @Autowired
+    private AddressClient addressClient;
 
     @Override
     public EmployeeResponse saveEmployee(Employee employee) {
@@ -52,7 +56,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Optional<EmployeeResponse> getEmployeeByEmpId(Integer empId) {
         Employee newEmployee = employeeRepository.findById(empId).get();
         if(newEmployee != null) {
-            employeeResponse = EmployeeHelper.setEmployeeDetails(newEmployee);
+           EmployeeResponse employeeResponse = EmployeeHelper.setEmployeeDetails(newEmployee);
+            AddressResponse addressResponse = addressClient.findAddressByEmpId(empId);
+            employeeResponse.setAddressResponse(addressResponse);
             Optional<EmployeeResponse> employeeResponseOptional = Optional.of(employeeResponse);
             if (employeeResponseOptional.isPresent())
                 return employeeResponseOptional;
