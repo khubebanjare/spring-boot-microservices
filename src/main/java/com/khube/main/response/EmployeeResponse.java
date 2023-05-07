@@ -15,10 +15,10 @@ public class EmployeeResponse implements Serializable {
     private String email;
     private Long mobileNumber;
     private Double salary;
-
+    private AddressResponse addressResponse;
     public EmployeeResponse() {
     }
-    public EmployeeResponse(Integer empId, String firstName, String lastName, String fatherName, Integer age, String email, Long mobileNumber, Double salary) {
+    public EmployeeResponse(Integer empId, String firstName, String lastName, String fatherName, Integer age, String email, Long mobileNumber, Double salary, AddressResponse addressResponse) {
         this.empId = empId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,6 +27,7 @@ public class EmployeeResponse implements Serializable {
         this.email = email;
         this.mobileNumber = mobileNumber;
         this.salary = salary;
+        this.addressResponse = addressResponse;
     }
 
     public Integer getEmpId() {
@@ -93,6 +94,14 @@ public class EmployeeResponse implements Serializable {
         this.salary = salary;
     }
 
+    public AddressResponse getAddressResponse() {
+        return addressResponse;
+    }
+
+    public void setAddressResponse(AddressResponse addressResponse) {
+        this.addressResponse = addressResponse;
+    }
+
     @Override
     public String toString() {
         return "EmployeeResponse{" +
@@ -104,6 +113,7 @@ public class EmployeeResponse implements Serializable {
                 ", email='" + email + '\'' +
                 ", mobileNumber=" + mobileNumber +
                 ", salary=" + salary +
+                ", addressResponse=" + addressResponse +
                 '}';
     }
 }
