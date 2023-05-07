@@ -1,0 +1,14 @@
+app:
+  name: address application
+  api:
+    title: Address Service APIs
+    version: 1.0.0
+    description: Address Application APIs description
+    base-package: com.khube.main.controller
+    contact-name: micrograps
+    contact-email: info.khube@gmail.com
+    controllerName: Address Controller
+    groupName: Address Service
+    controllerDescription: This controller is used for create, get by id and get all for Addresses.
+    swagger:
+      enable: true

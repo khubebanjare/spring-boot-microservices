@@ -63,4 +63,11 @@ public class AddressServiceImpl implements AddressService {
        else
            throw new AddressNotFoundException("Address is Not Found for given Address ID");
     }
+
+	@Override
+	public AddressResponse findAddressByEmpId(Integer empId) {
+		Address address = addressRepository.findAddressByEmpId(empId);
+		AddressResponse addressResponse = AddressHelper.setAddressDetails(address);
+		return addressResponse;
+	}
 }

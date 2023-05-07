@@ -6,6 +6,8 @@ import com.khube.main.respones.AddressResponse;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.repository.query.Param;
+
 public interface AddressService {
 
     public AddressResponse createAddress(Address address);
@@ -13,4 +15,6 @@ public interface AddressService {
     public List<AddressResponse> getAddresses();
 
     public Optional<AddressResponse> getAddressByAddressId(Integer addressId);
+    
+    public AddressResponse findAddressByEmpId(Integer empId);
 }
