@@ -1,0 +1,14 @@
+app:
+  name: employee application
+  api:
+    title: Employee Service APIs
+    version: 1.0.0
+    description: Employee Application APIs description
+    base-package: com.khube.main.controller
+    contact-name: micrograps
+    contact-email: info.khube@gmail.com
+    controllerName: Employee Controller
+    groupName: Employee Service
+    controllerDescription: This controller is used for create, get by id and get all for Employees.
+    swagger:
+      enable: true

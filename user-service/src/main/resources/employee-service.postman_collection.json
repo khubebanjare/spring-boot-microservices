@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "49e522b4-ef40-45a1-b689-a239f0d3b7cb",
+		"name": "employee-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8082/employee/employees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"empId\": 101,\r\n    \"firstName\": \"Khube\",\r\n    \"lastName\": \"Banjare\",\r\n    \"fatherName\": \"Itwari Banjare\",\r\n    \"age\": 28,\r\n    \"email\": \"info.khube@gmail.com\",\r\n    \"mobileNumber\": 8871914306,\r\n    \"salary\": 20000.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/employee-app/employee/api/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"employee-app",
+						"employee",
+						"api",
+						"employees"
+					]
+				},
+				"description": "create a new Employee with provided employee details"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/employee/employees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/employee-app/employee/api/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"employee-app",
+						"employee",
+						"api",
+						"employees"
+					]
+				},
+				"description": "It's fectches All Employee Details"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8082/employee/employees/103",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/employee-app/employee/api/employees/103",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"employee-app",
+						"employee",
+						"api",
+						"employees",
+						"103"
+					]
+				},
+				"description": "We will get Employee Details based on Id has provided"
+			},
+			"response": []
+		}
+	]
+}
