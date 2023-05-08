@@ -1,6 +1,5 @@
 package com.khube.main.request;
 
-import com.khube.main.response.AddressResponse;
 import org.springframework.stereotype.Component;
 
 @Component

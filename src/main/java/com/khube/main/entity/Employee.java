@@ -1,11 +1,12 @@
 package com.khube.main.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 //import jakarta.persistence.Entity;
 //import jakarta.persistence.Id;
 //import jakarta.persistence.Table;
@@ -15,12 +16,15 @@ import javax.persistence.Table;
 public class Employee {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer empId;
     private String firstName;
     private String lastName;
     private String fatherName;
     private Integer age;
+    @Email(message = "invalid email address")
     private String email;
+    @Pattern(regexp = "^\\d{10}$", message = "invalid mobile number")
     private Long mobileNumber;
     private Double salary;
 

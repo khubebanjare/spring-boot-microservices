@@ -1,6 +1,10 @@
 package com.khube.main.controller;
 
 import com.khube.main.entity.Employee;
+import com.khube.main.exception.AddressResponseEmpty;
+import com.khube.main.exception.EmployeeAlreadyPresent;
+import com.khube.main.exception.EmployeeIsNotPresent;
+import com.khube.main.exception.EmployeeNotFoundException;
 import com.khube.main.request.EmployeeRequest;
 import com.khube.main.response.EmployeeResponse;
 import com.khube.main.service.EmployeeService;
@@ -35,21 +39,21 @@ public class EmployeeController {
 
     @ApiOperation(value = SwaggerConfigValue.VALUE1, response = EmployeeResponse.class)
     @PostMapping(value = "/employees")
-    public ResponseEntity<EmployeeRequest> saveEmployee(@RequestBody Employee employee){
+    public ResponseEntity<EmployeeRequest> saveEmployee(@RequestBody Employee employee) throws EmployeeAlreadyPresent {
         EmployeeRequest employeeRequest = employeeService.saveEmployee(employee);
         return new ResponseEntity<EmployeeRequest>(employeeRequest, HttpStatus.CREATED);
     }
 
     @ApiOperation(value = SwaggerConfigValue.VALUE2, response = List.class)
     @GetMapping(value = "/employees")
-    public ResponseEntity<List<EmployeeResponse>> getEmployees(){
+    public ResponseEntity<List<EmployeeResponse>> getEmployees() throws EmployeeNotFoundException {
         List<EmployeeResponse> employeeResponses = employeeService.getEmployees();
         return new ResponseEntity<>(employeeResponses, HttpStatus.OK);
     }
 
     @ApiOperation(value = SwaggerConfigValue.VALUE3, response = Optional.class)
     @GetMapping(value = "/employees/{empId}")
-    public ResponseEntity<Optional<EmployeeResponse>> getEmployeeByEmpId(@PathVariable Integer empId){
+    public ResponseEntity<Optional<EmployeeResponse>> getEmployeeByEmpId(@PathVariable Integer empId) throws AddressResponseEmpty, EmployeeNotFoundException, EmployeeIsNotPresent {
         Optional<EmployeeResponse> employeeResponse = employeeService.getEmployeeByEmpId(empId);
         return new ResponseEntity<>(employeeResponse, HttpStatus.OK);
     }

@@ -1,7 +1,9 @@
 package com.khube.main.service.impl;
 
 import com.khube.main.entity.Employee;
-import com.khube.main.exception.EmployeeIsEmpty;
+import com.khube.main.exception.AddressResponseEmpty;
+import com.khube.main.exception.EmployeeAlreadyPresent;
+import com.khube.main.exception.EmployeeIsNotPresent;
 import com.khube.main.exception.EmployeeNotFoundException;
 import com.khube.main.feignclient.AddressClient;
 import com.khube.main.helper.EmployeeHelper;
@@ -31,17 +33,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     private AddressClient addressClient;
 
     @Override
-    public EmployeeRequest saveEmployee(Employee employee) {
-        Employee newEmployee = employeeRepository.save(employee);
-        if(newEmployee != null)
+    public EmployeeRequest saveEmployee(Employee employee) throws EmployeeAlreadyPresent {
+        Employee existEmployee = employeeRepository.findById(employee.getEmpId()).get();
+        if(existEmployee == null) {
+            Employee newEmployee = employeeRepository.save(employee);
             employeeRequest = EmployeeHelper.setEmployeeDetailsForRequest(newEmployee);
+        }
         else
-            throw new EmployeeIsEmpty("Employee is Empty Please Insert employee data!!!");
+            throw new EmployeeAlreadyPresent("Employee is already present!");
         return employeeRequest;
     }
 
     @Override
-    public List<EmployeeResponse> getEmployees() {
+    public List<EmployeeResponse> getEmployees() throws EmployeeNotFoundException{
         List<Employee> employees = employeeRepository.findAll();
         List<EmployeeResponse> employeeResponses = new ArrayList<EmployeeResponse>();
         if(!employees.isEmpty()) {
@@ -51,24 +55,28 @@ public class EmployeeServiceImpl implements EmployeeService {
             });
         }
         else
-            throw new EmployeeIsEmpty("Employee is Empty");
+            throw new EmployeeNotFoundException("Employee Not Found");
         return employeeResponses;
     }
 
     @Override
-    public Optional<EmployeeResponse> getEmployeeByEmpId(Integer empId) {
-        Employee newEmployee = employeeRepository.findById(empId).get();
-        if(newEmployee != null) {
-           EmployeeResponse employeeResponse = EmployeeHelper.setEmployeeDetailsForResponse(newEmployee);
-            AddressResponse addressResponse = addressClient.findAddressByEmpId(empId);
+    public Optional<EmployeeResponse> getEmployeeByEmpId(Integer empId) throws AddressResponseEmpty, EmployeeNotFoundException, EmployeeIsNotPresent {
+        Employee  newEmployee = employeeRepository.findById(empId)
+                                .orElseThrow(
+                                        () -> new EmployeeIsNotPresent("Employee is not present for the given Id : " + empId));
+
+        EmployeeResponse employeeResponse = EmployeeHelper.setEmployeeDetailsForResponse(newEmployee);
+        AddressResponse addressResponse = addressClient.findAddressByEmpId(empId);
+
+        if(addressResponse != null)
             employeeResponse.setAddressResponse(addressResponse);
-            Optional<EmployeeResponse> employeeResponseOptional = Optional.of(employeeResponse);
-            if (employeeResponseOptional.isPresent())
-                return employeeResponseOptional;
-            else
-                throw new EmployeeNotFoundException("Employee is Not Found for given Address ID");
-        }
         else
-            throw new EmployeeNotFoundException("Employee is Not Found for given Address ID");
+            throw new AddressResponseEmpty("Please provide Address Response to avoid NullPointerException");
+
+        Optional<EmployeeResponse> employeeResponseOptional = Optional.of(employeeResponse);
+        if (employeeResponseOptional.isPresent())
+            return employeeResponseOptional;
+        else
+            throw new EmployeeNotFoundException("Employee is Not Found");
     }
 }
