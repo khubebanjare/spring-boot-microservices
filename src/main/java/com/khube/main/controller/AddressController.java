@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.khube.main.entity.Address;
+import com.khube.main.exception.AddressAlreadyPresent;
+import com.khube.main.exception.AddressNotFoundException;
+import com.khube.main.exception.AddressNotPresent;
+import com.khube.main.request.AddressRequest;
 import com.khube.main.respones.AddressResponse;
 import com.khube.main.service.AddressService;
 import com.khube.main.util.SwaggerConfigValue;
@@ -46,24 +50,24 @@ public class AddressController {
 
     @ApiOperation(value = SwaggerConfigValue.VALUE1, response = AddressResponse.class)
     @PostMapping(value = "/addresses")
-    public AddressResponse createAddress(@RequestBody Address address){
+    public AddressRequest createAddress(@RequestBody Address address)throws AddressAlreadyPresent{
         return addressService.createAddress(address);
     }
 
     @ApiOperation(value = SwaggerConfigValue.VALUE2, response = List.class)
     @GetMapping(value = "/addresses")
-    public List<AddressResponse> getAddresses(){
+    public List<AddressResponse> getAddresses() throws AddressNotFoundException{
         return addressService.getAddresses();
     }
 
     @ApiOperation(value = SwaggerConfigValue.VALUE3, response = Optional.class)
     @GetMapping(value = "/addresses/{addressId}")
-    public Optional<AddressResponse> getAddressByAddressId(@PathVariable Integer addressId){
+    public Optional<AddressResponse> getAddressByAddressId(@PathVariable Integer addressId) throws AddressNotPresent, AddressNotFoundException{
         return addressService.getAddressByAddressId(addressId);
     }
     
     @GetMapping("/addresseemp/{empId}")
-    public ResponseEntity<AddressResponse> findAddressByEmpId(@PathVariable Integer empId) {
+    public ResponseEntity<AddressResponse> findAddressByEmpId(@PathVariable Integer empId) throws AddressNotFoundException {
     	AddressResponse adddressResponse = addressService.findAddressByEmpId(empId);
     	return new ResponseEntity<AddressResponse>(adddressResponse, HttpStatus.OK);
     }
