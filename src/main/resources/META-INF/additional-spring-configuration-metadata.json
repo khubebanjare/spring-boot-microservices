@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "khube.openapi.dev-url",
+    "type": "java.lang.String",
+    "description": "A description for 'khube.openapi.dev-url'"
+  },
+  {
+    "name": "khube.openapi.prod-url",
+    "type": "java.lang.String",
+    "description": "A description for 'khube.openapi.prod-url'"
+  }
+]}
