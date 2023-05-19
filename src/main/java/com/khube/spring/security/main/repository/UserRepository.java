@@ -8,4 +8,5 @@ import com.khube.spring.security.main.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+	public User findByUsername(String username);
 }

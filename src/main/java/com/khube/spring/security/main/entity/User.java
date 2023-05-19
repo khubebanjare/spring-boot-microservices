@@ -21,7 +21,7 @@ public class User {
 	private Integer userId;
 	
 	@NotNull
-	private String userName;
+	private String username;
 	@NotNull
 	private String password;
 	@Email
@@ -38,11 +38,11 @@ public class User {
 	public User() {
 	}
 
-	public User(Integer userId, @NotNull String userName, @NotNull String password, @Email @NotNull String email,
+	public User(Integer userId, @NotNull String username, @NotNull String password, @Email @NotNull String email,
 			Set<Role> roles) {
 		super();
 		this.userId = userId;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.roles = roles;
@@ -56,12 +56,12 @@ public class User {
 		this.userId = usrId;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String userName) {
+		this.username = userName;
 	}
 
 	public String getPassword() {
@@ -90,7 +90,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", email=" + email
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", email=" + email
 				+ ", roles=" + roles + "]";
 	}
 	

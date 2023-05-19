@@ -10,7 +10,7 @@ public class UserHelper {
 	
 	public static UserRequest setUserDetailsForRequest(User user) {
 		userRequest.setUserId(user.getUserId());
-		userRequest.setUserName(user.getUserName());
+		userRequest.setUsername(user.getUsername());
 		userRequest.setPassword(user.getPassword());
 		userRequest.setEmail(user.getEmail());
 		userRequest.setRoles(user.getRoles());
@@ -20,7 +20,7 @@ public class UserHelper {
 	public static UserResponse setUserDetailsForMultiObjectForResponse(User user) {
 		UserResponse userResponse = new UserResponse();
 		userResponse.setUserId(user.getUserId());
-		userResponse.setUserName(user.getUserName());
+		userResponse.setUsername(user.getUsername());
 		userResponse.setPassword(user.getPassword());
 		userResponse.setEmail(user.getEmail());
 		userResponse.setRoles(user.getRoles());

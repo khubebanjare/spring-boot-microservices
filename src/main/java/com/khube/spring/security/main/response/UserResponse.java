@@ -7,7 +7,7 @@ import com.khube.spring.security.main.entity.Role;
 public class UserResponse {
 
 	private Integer userId;
-	private String userName;
+	private String username;
 	private String password;
 	private String email;
 	private Set<Role> roles;
@@ -15,10 +15,10 @@ public class UserResponse {
 	public UserResponse() {
 	}
 
-	public UserResponse(Integer userId, String userName, String password, String email, Set<Role> roles) {
+	public UserResponse(Integer userId, String username, String password, String email, Set<Role> roles) {
 		super();
 		this.userId = userId;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.roles = roles;
@@ -32,12 +32,12 @@ public class UserResponse {
 		this.userId = usrId;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String userName) {
+		this.username = userName;
 	}
 
 	public String getPassword() {
@@ -66,7 +66,7 @@ public class UserResponse {
 
 	@Override
 	public String toString() {
-		return "UserResponse [userId=" + userId + ", userName=" + userName + ", password=" + password + ", email=" + email
+		return "UserResponse [userId=" + userId + ", username=" + username + ", password=" + password + ", email=" + email
 				+ ", roles=" + roles + "]";
 	}
 
