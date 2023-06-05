@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
+import com.khube.crm.enquiry.main.request.ProductRequest;
+
 @Entity
 @Table(name = "enquiry_tab")
 public class Enquiry {
@@ -12,17 +14,23 @@ public class Enquiry {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer enquiryId;
     private String clientName;
-    private String clientMobileNumber;
+    private Long clientMobileNumber;
     private Date dateOfEnquiry;
+    private Integer productId;
+    
+    @ManyToOne
+    private ProductRequest productRequest;
 
     public Enquiry() {
     }
 
-    public Enquiry(Integer enquiryId, String clientName, String clientMobileNumber, Date dateOfEnquiry) {
+    public Enquiry(Integer enquiryId, String clientName, Long clientMobileNumber, Date dateOfEnquiry, ProductRequest productRequest, Integer productId) {
         this.enquiryId = enquiryId;
         this.clientName = clientName;
         this.clientMobileNumber = clientMobileNumber;
         this.dateOfEnquiry = dateOfEnquiry;
+        this.productRequest = productRequest;
+        this.productId = productId;
     }
 
     public Integer getEnquiryId() {
@@ -41,11 +49,11 @@ public class Enquiry {
         this.clientName = clientName;
     }
 
-    public String getClientMobileNumber() {
+    public Long getClientMobileNumber() {
         return clientMobileNumber;
     }
 
-    public void setClientMobileNumber(String clientMobileNumber) {
+    public void setClientMobileNumber(Long clientMobileNumber) {
         this.clientMobileNumber = clientMobileNumber;
     }
 
@@ -57,13 +65,27 @@ public class Enquiry {
         this.dateOfEnquiry = dateOfEnquiry;
     }
 
-    @Override
-    public String toString() {
-        return "Enquiry{" +
-                "enquiryId=" + enquiryId +
-                ", clientName='" + clientName + '\'' +
-                ", clientMobileNumber='" + clientMobileNumber + '\'' +
-                ", dateOfEnquiry=" + dateOfEnquiry +
-                '}';
-    }
+    
+    public ProductRequest getProductRequest() {
+		return productRequest;
+	}
+
+	public void setProductRequest(ProductRequest productRequest) {
+		this.productRequest = productRequest;
+	}
+
+	public Integer getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Integer productId) {
+		this.productId = productId;
+	}
+
+	@Override
+	public String toString() {
+		return "Enquiry [enquiryId=" + enquiryId + ", clientName=" + clientName + ", clientMobileNumber="
+				+ clientMobileNumber + ", dateOfEnquiry=" + dateOfEnquiry + ", productId=" + productId
+				+ ", productRequest=" + productRequest + "]";
+	}
 }

@@ -1,40 +1,46 @@
 package com.khube.crm.enquiry.main.service.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.khube.crm.enquiry.main.entity.Enquiry;
 import com.khube.crm.enquiry.main.exception.EnquiryAlreadyPresentException;
 import com.khube.crm.enquiry.main.exception.EnquiryIsNotPresent;
 import com.khube.crm.enquiry.main.exception.EnquiryNotFoundException;
 import com.khube.crm.enquiry.main.helper.EnquiryHelper;
+import com.khube.crm.enquiry.main.openfeign.ProductFeignClient;
 import com.khube.crm.enquiry.main.repository.EnquiryRepository;
 import com.khube.crm.enquiry.main.request.EnquiryRequest;
 import com.khube.crm.enquiry.main.response.EnquiryResponse;
 import com.khube.crm.enquiry.main.service.CRMEnquiryService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CRMEnquiryServiceImpl implements CRMEnquiryService {
 
     @Autowired
     private EnquiryRepository enquiryRepository;
-
+    
     @Autowired
     private EnquiryRequest enquiryRequest;
-
+    
     @Autowired
     private EnquiryResponse enquiryResponse;
+    
+    @Autowired
+    private ProductFeignClient productFeignClient;
 
     @Override
     public EnquiryRequest createProductEnquiry(Enquiry enquiry) {
         if(enquiryRepository.existsById(enquiry.getEnquiryId()))
         	throw new EnquiryAlreadyPresentException("Enquiry Data is already present...");
-        
     	Enquiry newEnquiry = enquiryRepository.save(enquiry);
         enquiryRequest = EnquiryHelper.setEnquiryDetailsForRequest(newEnquiry);
+        
         return enquiryRequest;
     }
 
@@ -65,4 +71,25 @@ public class CRMEnquiryServiceImpl implements CRMEnquiryService {
         else
             throw new EnquiryNotFoundException("Enquiry data not found");
     }
+
+	@Override
+	public EnquiryResponse findEnquiryByProductId(Integer productId) {
+		Enquiry enquiry = enquiryRepository.findEnquiryByProductId(productId);
+		if(enquiry != null)
+			enquiryResponse = EnquiryHelper.setEnquiryDetailsForResponse(enquiry);
+		else
+			throw new EnquiryNotFoundException("Enquidy Data not found");
+		return enquiryResponse;
+	}
+
+	@Override
+	public EnquiryResponse findEnquiryByproductIdAndDateOfEnquiry(Integer productId, Date dateOfEnquiry) {
+		Enquiry enquiry = enquiryRepository.findEnquiryByproductIdAndDateOfEnquiry(productId, dateOfEnquiry);
+		if(enquiry != null)
+			enquiryResponse = EnquiryHelper.setEnquiryDetailsForResponse(enquiry);
+		else
+			throw new EnquiryNotFoundException("Enquidy Data not found");
+		return enquiryResponse;
+	}
+	
 }

@@ -1,15 +1,21 @@
 package com.khube.crm.enquiry.main.openfeign;
 
-import com.khube.crm.enquiry.main.entity.Enquiry;
-import com.khube.crm.enquiry.main.response.ProductResponse;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "product-service", url = "http://localhost:8087/product-service/product/api")
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.khube.crm.enquiry.main.request.ProductRequest;
+import com.khube.crm.enquiry.main.response.ProductResponse;
+
+@FeignClient(name = "product-service", url = "${product.service.base.url}")
 public interface ProductFeignClient {
 
-    @PostMapping(value = "/products")
-    public ResponseEntity<ProductResponse> createProductEnquiry(@RequestBody Enquiry enquiry);
+    @PostMapping(value = "/products/{productId}")
+    public ProductRequest getProductById(@PathVariable Integer productId);
+    
+    
+    public ProductResponse findProductByEnquiryId(@PathVariable() Integer enquiryId);
+    
+    
 }

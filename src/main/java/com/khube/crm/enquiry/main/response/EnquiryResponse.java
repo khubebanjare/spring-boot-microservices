@@ -2,24 +2,30 @@ package com.khube.crm.enquiry.main.response;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class EnquiryResponse {
 
     private Integer enquiryId;
     private String clientName;
-    private String clientMobileNumber;
+    private Long clientMobileNumber;
     private Date dateOfEnquiry;
-
+    private ProductResponse productResponse;
+    
     public EnquiryResponse() {
     }
 
-    public EnquiryResponse(Integer enquiryId, String clientName, String clientMobileNumber, Date dateOfEnquiry) {
-        this.enquiryId = enquiryId;
-        this.clientName = clientName;
-        this.clientMobileNumber = clientMobileNumber;
-        this.dateOfEnquiry = dateOfEnquiry;
-    }
+    public EnquiryResponse(Integer enquiryId, String clientName, Long clientMobileNumber, Date dateOfEnquiry,
+			ProductResponse productResponse) {
+		this.enquiryId = enquiryId;
+		this.clientName = clientName;
+		this.clientMobileNumber = clientMobileNumber;
+		this.dateOfEnquiry = dateOfEnquiry;
+		this.productResponse = productResponse;
+	}
 
-    public Integer getEnquiryId() {
+	public Integer getEnquiryId() {
         return enquiryId;
     }
 
@@ -35,11 +41,11 @@ public class EnquiryResponse {
         this.clientName = clientName;
     }
 
-    public String getClientMobileNumber() {
+    public Long getClientMobileNumber() {
         return clientMobileNumber;
     }
 
-    public void setClientMobileNumber(String clientMobileNumber) {
+    public void setClientMobileNumber(Long clientMobileNumber) {
         this.clientMobileNumber = clientMobileNumber;
     }
 
@@ -50,14 +56,20 @@ public class EnquiryResponse {
     public void setDateOfEnquiry(Date dateOfEnquiry) {
         this.dateOfEnquiry = dateOfEnquiry;
     }
+    
+    public ProductResponse getProductResponse() {
+		return productResponse;
+	}
 
-    @Override
-    public String toString() {
-        return "EnquiryResponse{" +
-                "enquiryId=" + enquiryId +
-                ", clientName='" + clientName + '\'' +
-                ", clientMobileNumber='" + clientMobileNumber + '\'' +
-                ", dateOfEnquiry=" + dateOfEnquiry +
-                '}';
-    }
+	public void setProductResponse(ProductResponse productResponse) {
+		this.productResponse = productResponse;
+	}
+
+	@Override
+	public String toString() {
+		return "EnquiryResponse [enquiryId=" + enquiryId + ", clientName=" + clientName + ", clientMobileNumber="
+				+ clientMobileNumber + ", dateOfEnquiry=" + dateOfEnquiry + ", productResponse=" + productResponse
+				+ "]";
+	}
+	
 }

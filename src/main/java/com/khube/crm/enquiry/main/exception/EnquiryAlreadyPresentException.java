@@ -2,7 +2,9 @@ package com.khube.crm.enquiry.main.exception;
 
 public class EnquiryAlreadyPresentException extends RuntimeException{
 
-    public EnquiryAlreadyPresentException(){}
+    private static final long serialVersionUID = 1L;
+
+	public EnquiryAlreadyPresentException(){}
 
     public EnquiryAlreadyPresentException(String message){super(message);}
 }
