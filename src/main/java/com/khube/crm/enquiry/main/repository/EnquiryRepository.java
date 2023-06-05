@@ -13,7 +13,7 @@ import com.khube.crm.enquiry.main.entity.Enquiry;
 public interface EnquiryRepository extends JpaRepository<Enquiry, Integer> {
 
 	public Enquiry findEnquiryByProductId(@Param("productId") Integer productId);
-	
-	public Enquiry findEnquiryByproductIdAndDateOfEnquiry(@RequestParam("productId") Integer productId,
+
+	public Enquiry findByproductIdAndDateOfEnquiry(@RequestParam("productId") Integer productId,
 																  @RequestParam("dateOfEnquiry") Date dateOfEnquiry);
 }

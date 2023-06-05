@@ -18,5 +18,5 @@ public interface CRMEnquiryService {
     
     public EnquiryResponse findEnquiryByProductId(Integer productId);
     
-    public EnquiryResponse findEnquiryByproductIdAndDateOfEnquiry(Integer productId, Date dateOfEnquiry);
+    public EnquiryResponse findByproductIdAndDateOfEnquiry(Integer productId, Date dateOfEnquiry);
 }

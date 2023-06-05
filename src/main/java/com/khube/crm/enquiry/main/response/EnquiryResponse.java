@@ -11,17 +11,19 @@ public class EnquiryResponse {
     private String clientName;
     private Long clientMobileNumber;
     private Date dateOfEnquiry;
+    private Integer productId;
     private ProductResponse productResponse;
     
     public EnquiryResponse() {
     }
 
     public EnquiryResponse(Integer enquiryId, String clientName, Long clientMobileNumber, Date dateOfEnquiry,
-			ProductResponse productResponse) {
+                           Integer productId, ProductResponse productResponse) {
 		this.enquiryId = enquiryId;
 		this.clientName = clientName;
 		this.clientMobileNumber = clientMobileNumber;
 		this.dateOfEnquiry = dateOfEnquiry;
+        this.productId = productId;
 		this.productResponse = productResponse;
 	}
 
@@ -56,7 +58,15 @@ public class EnquiryResponse {
     public void setDateOfEnquiry(Date dateOfEnquiry) {
         this.dateOfEnquiry = dateOfEnquiry;
     }
-    
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
+    }
+
     public ProductResponse getProductResponse() {
 		return productResponse;
 	}
@@ -65,11 +75,15 @@ public class EnquiryResponse {
 		this.productResponse = productResponse;
 	}
 
-	@Override
-	public String toString() {
-		return "EnquiryResponse [enquiryId=" + enquiryId + ", clientName=" + clientName + ", clientMobileNumber="
-				+ clientMobileNumber + ", dateOfEnquiry=" + dateOfEnquiry + ", productResponse=" + productResponse
-				+ "]";
-	}
-	
+    @Override
+    public String toString() {
+        return "EnquiryResponse{" +
+                "enquiryId=" + enquiryId +
+                ", clientName='" + clientName + '\'' +
+                ", clientMobileNumber=" + clientMobileNumber +
+                ", dateOfEnquiry=" + dateOfEnquiry +
+                ", productId=" + productId +
+                ", productResponse=" + productResponse +
+                '}';
+    }
 }

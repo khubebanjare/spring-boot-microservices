@@ -31,8 +31,8 @@ public class CRMEnquiryServiceImpl implements CRMEnquiryService {
     @Autowired
     private EnquiryResponse enquiryResponse;
     
-    @Autowired
-    private ProductFeignClient productFeignClient;
+//    @Autowired
+//    private ProductFeignClient productFeignClient;
 
     @Override
     public EnquiryRequest createProductEnquiry(Enquiry enquiry) {
@@ -78,17 +78,17 @@ public class CRMEnquiryServiceImpl implements CRMEnquiryService {
 		if(enquiry != null)
 			enquiryResponse = EnquiryHelper.setEnquiryDetailsForResponse(enquiry);
 		else
-			throw new EnquiryNotFoundException("Enquidy Data not found");
+			throw new EnquiryNotFoundException("Enquiry Data not found");
 		return enquiryResponse;
 	}
 
 	@Override
-	public EnquiryResponse findEnquiryByproductIdAndDateOfEnquiry(Integer productId, Date dateOfEnquiry) {
-		Enquiry enquiry = enquiryRepository.findEnquiryByproductIdAndDateOfEnquiry(productId, dateOfEnquiry);
+	public EnquiryResponse findByproductIdAndDateOfEnquiry(Integer productId, Date dateOfEnquiry) {
+		Enquiry enquiry = enquiryRepository.findByproductIdAndDateOfEnquiry(productId, dateOfEnquiry);
 		if(enquiry != null)
 			enquiryResponse = EnquiryHelper.setEnquiryDetailsForResponse(enquiry);
 		else
-			throw new EnquiryNotFoundException("Enquidy Data not found");
+			throw new EnquiryNotFoundException("Enquiry Data not found");
 		return enquiryResponse;
 	}
 	

@@ -12,6 +12,7 @@ public class EnquiryHelper {
         enquiryRequest.setClientName(enquiry.getClientName());
         enquiryRequest.setClientMobileNumber(enquiry.getClientMobileNumber());
         enquiryRequest.setDateOfEnquiry(enquiry.getDateOfEnquiry());
+        enquiryRequest.setProductId(enquiry.getProductId());
         return enquiryRequest;
     }
 
@@ -21,6 +22,7 @@ public class EnquiryHelper {
         enquiryResponse.setClientName(enquiry.getClientName());
         enquiryResponse.setClientMobileNumber(enquiry.getClientMobileNumber());
         enquiryResponse.setDateOfEnquiry(enquiry.getDateOfEnquiry());
+        enquiryResponse.setProductId(enquiry.getProductId());
         return enquiryResponse;
     }
 }

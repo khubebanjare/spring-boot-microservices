@@ -51,11 +51,11 @@ public class CRMEnquiryController {
     	return new ResponseEntity<EnquiryResponse>(enquiryResponse, HttpStatus.OK);
     }
     
-    @GetMapping(value = "/enquiries/{}")
+    @GetMapping(value = "/enquiries/")
     public ResponseEntity<EnquiryResponse> findEnquiryByProductIdAndDateOfEnquiry(
     											@RequestParam("productId") Integer productId, 
     											@RequestParam("dateOfEnquiry") Date dateOfEnquiry){
-    	EnquiryResponse enquiryResponse = crmEnquiryService.findEnquiryByproductIdAndDateOfEnquiry(productId, dateOfEnquiry);
+    	EnquiryResponse enquiryResponse = crmEnquiryService.findByproductIdAndDateOfEnquiry(productId, dateOfEnquiry);
     	return new ResponseEntity<EnquiryResponse>(enquiryResponse, HttpStatus.OK);
     }
 }
