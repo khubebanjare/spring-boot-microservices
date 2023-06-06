@@ -41,7 +41,6 @@ public class ProductServiceImpl implements ProductService {
         LOGGER.debug("ProductServiceImpl:saveProduct response payload {} " + Mapper.mapToJsonString(product));
        productRequest = ProductHelper.setProductDetailsForRequest(newProduct);
         LOGGER.debug("ProductServiceImpl:saveProduct Response {} " + Mapper.mapToJsonString(product));
-        LOGGER.info("ProductServiceImpl:saveProduct execution ended....");
        return productRequest;
     }
 
@@ -62,7 +61,6 @@ public class ProductServiceImpl implements ProductService {
         }
         else
             throw new ProductNotFoundException("Product Not Found");
-        LOGGER.info("ProductServiceImpl:getProducts execution ended....");
         return productResponses;
     }
 

@@ -1,7 +1,9 @@
 package com.khube.main.product.exception;
 
 public class ProductAlreadyPresent extends RuntimeException{
-    public ProductAlreadyPresent(){}
+    private static final long serialVersionUID = 1L;
+
+	public ProductAlreadyPresent(){}
 
     public ProductAlreadyPresent(String message){
         super(message);
