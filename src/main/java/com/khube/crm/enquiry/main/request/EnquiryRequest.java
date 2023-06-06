@@ -1,6 +1,6 @@
 package com.khube.crm.enquiry.main.request;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
@@ -10,13 +10,13 @@ public class EnquiryRequest {
     private Integer enquiryId;
     private String clientName;
     private Long clientMobileNumber;
-    private Date dateOfEnquiry;
+    private LocalDate dateOfEnquiry;
     private Integer productId;
     
     public EnquiryRequest() {
     }
 
-    public EnquiryRequest(Integer enquiryId, String clientName, Long clientMobileNumber, Date dateOfEnquiry,
+    public EnquiryRequest(Integer enquiryId, String clientName, Long clientMobileNumber, LocalDate dateOfEnquiry,
     		Integer productId) {
 		super();
 		this.enquiryId = enquiryId;
@@ -50,11 +50,11 @@ public class EnquiryRequest {
         this.clientMobileNumber = clientMobileNumber;
     }
 
-    public Date getDateOfEnquiry() {
+    public LocalDate getDateOfEnquiry() {
         return dateOfEnquiry;
     }
 
-    public void setDateOfEnquiry(Date dateOfEnquiry) {
+    public void setDateOfEnquiry(LocalDate dateOfEnquiry) {
         this.dateOfEnquiry = dateOfEnquiry;
     }
 

@@ -1,10 +1,14 @@
 package com.khube.crm.enquiry.main.entity;
 
-import jakarta.persistence.*;
+import java.time.LocalDate;
 
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import com.khube.crm.enquiry.main.request.ProductRequest;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "enquiry_tab")
@@ -15,13 +19,14 @@ public class Enquiry {
     private Integer enquiryId;
     private String clientName;
     private Long clientMobileNumber;
-    private Date dateOfEnquiry;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateOfEnquiry;
     private Integer productId;
 
     public Enquiry() {
     }
 
-    public Enquiry(Integer enquiryId, String clientName, Long clientMobileNumber, Date dateOfEnquiry, Integer productId) {
+    public Enquiry(Integer enquiryId, String clientName, Long clientMobileNumber, LocalDate dateOfEnquiry, Integer productId) {
         this.enquiryId = enquiryId;
         this.clientName = clientName;
         this.clientMobileNumber = clientMobileNumber;
@@ -53,11 +58,11 @@ public class Enquiry {
         this.clientMobileNumber = clientMobileNumber;
     }
 
-    public Date getDateOfEnquiry() {
+    public LocalDate getDateOfEnquiry() {
         return dateOfEnquiry;
     }
 
-    public void setDateOfEnquiry(Date dateOfEnquiry) {
+    public void setDateOfEnquiry(LocalDate dateOfEnquiry) {
         this.dateOfEnquiry = dateOfEnquiry;
     }
 

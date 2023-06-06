@@ -1,29 +1,37 @@
-{
-	"properties": [
-		{
-			"name": "product.service.base.url",
-			"type": "java.lang.String",
-			"description": "A description for 'product.service.base.url'"
-		},
-		{
-			"name": "ci2.server.host",
-			"type": "java.lang.String",
-			"description": "A description for 'ci2.server.host'"
-		},
-		{
-			"name": "eureka.instance.prefer-ip-address",
-			"type": "java.lang.String",
-			"description": "A description for 'eureka.instance.prefer-ip-address'"
-		},
-		{
-			"name": "eureka.instance.hostname",
-			"type": "java.lang.String",
-			"description": "A description for 'eureka.instance.hostname'"
-		},
-		{
-			"name": "spring.cloud.client.hostname",
-			"type": "java.lang.String",
-			"description": "A description for 'spring.cloud.client.hostname'"
-		}
-	]
-}
+{"properties": [
+  {
+    "name": "product.service.base.url",
+    "type": "java.lang.String",
+    "description": "A description for 'product.service.base.url'"
+  },
+  {
+    "name": "ci2.server.host",
+    "type": "java.lang.String",
+    "description": "A description for 'ci2.server.host'"
+  },
+  {
+    "name": "eureka.instance.prefer-ip-address",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.instance.prefer-ip-address'"
+  },
+  {
+    "name": "eureka.instance.hostname",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.instance.hostname'"
+  },
+  {
+    "name": "spring.cloud.client.hostname",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.client.hostname'"
+  },
+  {
+    "name": "product.service.base.url",
+    "type": "java.lang.String",
+    "description": "A description for 'product.service.base.url'"
+  },
+  {
+    "name": "product.service.base.url",
+    "type": "java.lang.String",
+    "description": "A description for 'product.service.base.url'"
+  }
+]}

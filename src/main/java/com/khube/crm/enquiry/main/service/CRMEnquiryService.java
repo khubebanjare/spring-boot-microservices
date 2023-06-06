@@ -1,6 +1,6 @@
 package com.khube.crm.enquiry.main.service;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +16,5 @@ public interface CRMEnquiryService {
 
     public Optional<EnquiryResponse> getEnquiryById(Integer enquiryId);
     
-    public EnquiryResponse findEnquiryByProductId(Integer productId);
-    
-    public EnquiryResponse findByproductIdAndDateOfEnquiry(Integer productId, Date dateOfEnquiry);
+    public List<EnquiryResponse> findByProductIdAndDateOfEnquiry(Integer productId, LocalDate dateOfEnquiry);
 }
