@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.khube.crm.enquiry.main.entity.Enquiry;
 import com.khube.crm.enquiry.main.exception.EnquiryAlreadyPresentException;
-import com.khube.crm.enquiry.main.exception.EnquiryIsNotPresent;
+import com.khube.crm.enquiry.main.exception.EnquiryIsNotPresentException;
 import com.khube.crm.enquiry.main.exception.EnquiryNotFoundException;
 import com.khube.crm.enquiry.main.helper.EnquiryHelper;
 import com.khube.crm.enquiry.main.openfeign.ProductFeignClient;
@@ -74,7 +74,7 @@ public class CRMEnquiryServiceImpl implements CRMEnquiryService {
     	LOGGER.info("CRMEnquiryServiceImpl:getEnquiries execution started...");
         Enquiry existEnquiry = enquiryRepository.findById(enquiryId)
                 .orElseThrow(
-                        () ->  new EnquiryIsNotPresent("Product is not present for given Product ID!!! : " + enquiryId));
+                        () ->  new EnquiryIsNotPresentException("Product is not present for given Product ID!!! : " + enquiryId));
         getProductResponse(existEnquiry);
         Optional<EnquiryResponse> enquiryResponseOptional = Optional.of(enquiryResponse);
         LOGGER.debug("CRMEnquiryServiceImpl:getEnquiryById Response {} " + Mapper.mapToJsonString(enquiryResponseOptional));
@@ -96,7 +96,7 @@ public class CRMEnquiryServiceImpl implements CRMEnquiryService {
             });
         }
         else
-            throw new EnquiryNotFoundException("Enquiry Data not Found!!!!");
+            throw new EnquiryNotFoundException("Enquiry Data not Found for given condition!!!!");
 		LOGGER.debug("CRMEnquiryServiceImpl:findByProductIdAndDateOfEnquiry Response {} " + Mapper.mapToJsonString(enquiryResponses));
 		return enquiryResponses;
 	}
