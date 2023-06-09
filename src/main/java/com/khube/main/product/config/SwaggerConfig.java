@@ -2,8 +2,9 @@ package com.khube.main.product.config;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,10 +17,17 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.service.Tag;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger.web.DocExpansion;
+import springfox.documentation.swagger.web.ModelRendering;
+import springfox.documentation.swagger.web.OperationsSorter;
+import springfox.documentation.swagger.web.SwaggerResource;
+import springfox.documentation.swagger.web.SwaggerResourcesProvider;
+import springfox.documentation.swagger.web.TagsSorter;
+import springfox.documentation.swagger.web.UiConfiguration;
+import springfox.documentation.swagger.web.UiConfigurationBuilder;
 
 @Configuration
-@ConfigurationProperties("app.api")
-@ConditionalOnProperty(name="app.api.swagger.enable", havingValue = "true", matchIfMissing = false)
+@ConfigurationProperties(prefix = "app.api")
 public class SwaggerConfig  {
     private String version;
     private String title;
@@ -30,6 +38,10 @@ public class SwaggerConfig  {
     private String controllerName;
     private String controllerDescription;
     private String groupName;
+
+    @Value("${server.servlet.context-path}")
+    private String contextPath;
+    
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -41,7 +53,9 @@ public class SwaggerConfig  {
                 .directModelSubstitute(LocalDate.class, java.sql.Date.class)
                 .directModelSubstitute(LocalDateTime.class, java.util.Date.class)
                 .tags(new Tag(controllerName, controllerDescription))
-                .apiInfo(apiInfo());
+                .apiInfo(apiInfo())
+                .useDefaultResponseMessages(false)
+                .enableUrlTemplating(false);
     }
 
     private ApiInfo apiInfo() {
@@ -53,6 +67,36 @@ public class SwaggerConfig  {
                 .build();
     }
 
+    @Bean
+    public UiConfiguration uiConfiguration() {
+        return UiConfigurationBuilder.builder()
+                .deepLinking(true)
+                .displayOperationId(false)
+                .defaultModelsExpandDepth(1)
+                .defaultModelExpandDepth(1)
+                .defaultModelRendering(ModelRendering.EXAMPLE)
+                .displayRequestDuration(false)
+                .docExpansion(DocExpansion.NONE)
+                .filter(false)
+                .maxDisplayedTags(null)
+                .operationsSorter(OperationsSorter.ALPHA)
+                .showExtensions(false)
+                .tagsSorter(TagsSorter.ALPHA)
+                .supportedSubmitMethods(UiConfiguration.Constants.DEFAULT_SUBMIT_METHODS)
+                .validatorUrl(null)
+                .build();
+    }
+    @Bean
+    public SwaggerResourcesProvider swaggerResourcesProvider() {
+        return () -> {
+            SwaggerResource swaggerResource = new SwaggerResource();
+            swaggerResource.setName("Your API");
+            swaggerResource.setSwaggerVersion("3.0");
+            swaggerResource.setLocation(contextPath + "/v3/api-docs");
+            return List.of(swaggerResource);
+        };
+    }
+    
     public String getVersion() {
         return version;
     }

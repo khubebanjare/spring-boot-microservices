@@ -1,14 +1,14 @@
 app:
-  name: address application
+  name: product application
   api:
-    title: Address Service APIs
+    title: Product Service APIs
     version: 1.0.0
     description: Product Service Application APIs description
     base-package: com.khube.main.product.controller
     contact-name: micrograps
     contact-email: info.khube@gmail.com
-    controllerName: CRMEnquiry Controller
-    groupName: CRMEnquiry Service
+    controllerName: Product Controller
+    groupName: Product Service
     controllerDescription: This controller is used for create, get by id and get all for Addresses.
     swagger:
       enable: true
