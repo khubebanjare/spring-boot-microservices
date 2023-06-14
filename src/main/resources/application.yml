@@ -1,5 +1,11 @@
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
 app:
-  name: product application
+  name: Product Application
   api:
     title: Product Service APIs
     version: 1.0.0
@@ -9,6 +15,6 @@ app:
     contact-email: info.khube@gmail.com
     controllerName: Product Controller
     groupName: Product Service
-    controllerDescription: This controller is used for create, get by id and get all for Addresses.
+    controllerDescription: This controller is used for create, get by id and get all for Product Response.
     swagger:
       enable: true

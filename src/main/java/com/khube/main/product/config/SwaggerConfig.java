@@ -28,144 +28,126 @@ import springfox.documentation.swagger.web.UiConfigurationBuilder;
 
 @Configuration
 @ConfigurationProperties(prefix = "app.api")
-public class SwaggerConfig  {
-    private String version;
-    private String title;
-    private String description;
-    private String basePackage;
-    private String contactName;
-    private String contactEmail;
-    private String controllerName;
-    private String controllerDescription;
-    private String groupName;
+public class SwaggerConfig {
 
-    @Value("${server.servlet.context-path}")
-    private String contextPath;
-    
-    @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName(groupName)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage(basePackage))
-                .paths(PathSelectors.any())
-                .build()
-                .directModelSubstitute(LocalDate.class, java.sql.Date.class)
-                .directModelSubstitute(LocalDateTime.class, java.util.Date.class)
-                .tags(new Tag(controllerName, controllerDescription))
-                .apiInfo(apiInfo())
-                .useDefaultResponseMessages(false)
-                .enableUrlTemplating(false);
-    }
+	private String version;
+	private String title;
+	private String description;
+	private String basePackage;
+	private String contactName;
+	private String contactEmail;
+	private String controllerName;
+	private String controllerDescription;
+	private String groupName;
 
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .version(version)
-                .title(title)
-                .description(description)
-                .contact(new Contact(contactName, null, contactEmail))
-                .build();
-    }
+	@Value("${server.servlet.context-path}")
+	private String contextPath;
 
-    @Bean
-    public UiConfiguration uiConfiguration() {
-        return UiConfigurationBuilder.builder()
-                .deepLinking(true)
-                .displayOperationId(false)
-                .defaultModelsExpandDepth(1)
-                .defaultModelExpandDepth(1)
-                .defaultModelRendering(ModelRendering.EXAMPLE)
-                .displayRequestDuration(false)
-                .docExpansion(DocExpansion.NONE)
-                .filter(false)
-                .maxDisplayedTags(null)
-                .operationsSorter(OperationsSorter.ALPHA)
-                .showExtensions(false)
-                .tagsSorter(TagsSorter.ALPHA)
-                .supportedSubmitMethods(UiConfiguration.Constants.DEFAULT_SUBMIT_METHODS)
-                .validatorUrl(null)
-                .build();
-    }
-    @Bean
-    public SwaggerResourcesProvider swaggerResourcesProvider() {
-        return () -> {
-            SwaggerResource swaggerResource = new SwaggerResource();
-            swaggerResource.setName("Your API");
-            swaggerResource.setSwaggerVersion("3.0");
-            swaggerResource.setLocation(contextPath + "/v3/api-docs");
-            return List.of(swaggerResource);
-        };
-    }
-    
-    public String getVersion() {
-        return version;
-    }
+	@Bean
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2).groupName(groupName).select()
+				.apis(RequestHandlerSelectors.basePackage(basePackage)).paths(PathSelectors.any()).build()
+				.directModelSubstitute(LocalDate.class, java.sql.Date.class)
+				.directModelSubstitute(LocalDateTime.class, java.util.Date.class)
+				.tags(new Tag(controllerName, controllerDescription)).apiInfo(apiInfo())
+				.useDefaultResponseMessages(false).enableUrlTemplating(false);
+	}
 
-    public void setVersion(String version) {
-        this.version = version;
-    }
+	private ApiInfo apiInfo() {
+		return new ApiInfoBuilder().version(version).title(title).description(description)
+				.contact(new Contact(contactName, null, contactEmail)).build();
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	@Bean
+	public UiConfiguration uiConfiguration() {
+		return UiConfigurationBuilder.builder().deepLinking(true).displayOperationId(false).defaultModelsExpandDepth(1)
+				.defaultModelExpandDepth(1).defaultModelRendering(ModelRendering.EXAMPLE).displayRequestDuration(false)
+				.docExpansion(DocExpansion.NONE).filter(false).maxDisplayedTags(null)
+				.operationsSorter(OperationsSorter.ALPHA).showExtensions(false).tagsSorter(TagsSorter.ALPHA)
+				.supportedSubmitMethods(UiConfiguration.Constants.DEFAULT_SUBMIT_METHODS).validatorUrl(null).build();
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	@Bean
+	public SwaggerResourcesProvider swaggerResourcesProvider() {
+		return () -> {
+			SwaggerResource swaggerResource = new SwaggerResource();
+			swaggerResource.setName("Your API");
+			swaggerResource.setSwaggerVersion("3.0");
+			swaggerResource.setLocation(contextPath + "/v3/api-docs");
+			return List.of(swaggerResource);
+		};
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getVersion() {
+		return version;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setVersion(String version) {
+		this.version = version;
+	}
 
-    public String getBasePackage() {
-        return basePackage;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public void setBasePackage(String basePackage) {
-        this.basePackage = basePackage;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public String getContactName() {
-        return contactName;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setContactName(String contactName) {
-        this.contactName = contactName;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public String getContactEmail() {
-        return contactEmail;
-    }
+	public String getBasePackage() {
+		return basePackage;
+	}
 
-    public void setContactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
-    }
+	public void setBasePackage(String basePackage) {
+		this.basePackage = basePackage;
+	}
 
-    public String getControllerName() {
-        return controllerName;
-    }
+	public String getContactName() {
+		return contactName;
+	}
 
-    public void setControllerName(String controllerName) {
-        this.controllerName = controllerName;
-    }
+	public void setContactName(String contactName) {
+		this.contactName = contactName;
+	}
 
-    public String getControllerDescription() {
-        return controllerDescription;
-    }
+	public String getContactEmail() {
+		return contactEmail;
+	}
 
-    public void setControllerDescription(String controllerDescription) {
-        this.controllerDescription = controllerDescription;
-    }
+	public void setContactEmail(String contactEmail) {
+		this.contactEmail = contactEmail;
+	}
 
-    public String getGroupName() {
-        return groupName;
-    }
+	public String getControllerName() {
+		return controllerName;
+	}
 
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
-    }
+	public void setControllerName(String controllerName) {
+		this.controllerName = controllerName;
+	}
+
+	public String getControllerDescription() {
+		return controllerDescription;
+	}
+
+	public void setControllerDescription(String controllerDescription) {
+		this.controllerDescription = controllerDescription;
+	}
+
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+
 }

@@ -14,4 +14,10 @@ public interface ProductService {
     public List<ProductResponse> getProducts();
 
     public Optional<ProductResponse> getProductById(Integer productId);
+    
+    public ProductRequest updateProduct(Integer productId, Product product);
+    
+    public String deleteByProductId(Integer productId);
+    
+    public String deleteAllProducts();
 }

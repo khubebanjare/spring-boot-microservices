@@ -2,6 +2,7 @@ package com.khube.main.product.service.impl;
 
 import com.khube.main.product.entity.Product;
 import com.khube.main.product.exception.ProductAlreadyPresent;
+import com.khube.main.product.exception.ProductIsEmptyException;
 import com.khube.main.product.exception.ProductIsNotPresent;
 import com.khube.main.product.exception.ProductNotFoundException;
 import com.khube.main.product.helper.ProductHelper;
@@ -33,8 +34,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductRequest saveProduct(Product product) {
         LOGGER.info("ProductServiceImpl:saveProduct execution started...");
-       if(productRepository.existsById(product.getProductId()))
+       if(productRepository.existsById(product.getProductId())) {
+    	   LOGGER.warn("ProductServiceImpl:saveProduct Product Already present...");
     	   throw new ProductAlreadyPresent("Product Already present...");
+       }
 
         LOGGER.debug("ProductServiceImpl:saveProduct Request payload {} " + Mapper.mapToJsonString(product));
        Product newProduct = productRepository.save(product);
@@ -59,8 +62,10 @@ public class ProductServiceImpl implements ProductService {
                 productResponses.add(productResponse);
             });
         }
-        else
+        else {
+        	LOGGER.warn("ProductServiceImpl:getProducts Product Not Found....");
             throw new ProductNotFoundException("Product Not Found");
+        }
         return productResponses;
     }
 
@@ -71,14 +76,65 @@ public class ProductServiceImpl implements ProductService {
         Product existProduct = productRepository.findById(productId)
                                 .orElseThrow(
                                 () -> new ProductIsNotPresent("Product is not present for given Product ID!!! : " + productId));
-
+        LOGGER.warn("Product is not present for given Product ID!!! : " + productId);
         productResponse = ProductHelper.setProductDetailsForResponse(existProduct);
         LOGGER.info("ProductServiceImpl:getProductById converting response type {} " + productResponse);
         Optional<ProductResponse> productResponseOptional = Optional.of(productResponse);
         LOGGER.info("ProductServiceImpl:getProductById adding in optional class {} " + productResponse);
         if(productResponseOptional.isPresent())
             return productResponseOptional;
-        else
+        else {
+        	LOGGER.warn("ProductServiceImpl:getProductById Product Not Found got given product Id : " + productId);
             throw new ProductNotFoundException("Product Not Found");
+        }
     }
+
+	@Override
+	public ProductRequest updateProduct(Integer productId, Product product) {
+		LOGGER.info("ProductServiceImpl:updateProduct execution started....");
+		LOGGER.debug("ProductServiceImpl:updateProduct Request payload {} " + Mapper.mapToJsonString(product));
+		if( productRepository.findById(productId).isPresent()) {
+			Product updatedProduct = productRepository.save(product);
+			LOGGER.debug("ProductServiceImpl:updateProduct Request payload {} " + "Update Product for productId : " + productId + Mapper.mapToJsonString(product));
+			productRequest = ProductHelper.setProductDetailsForRequest(updatedProduct);
+			LOGGER.debug("ProductServiceImpl:updateProduct Request payload {} " + Mapper.mapToJsonString(product));
+		}
+		else{
+			Product newProduct = productRepository.save(product);
+	        LOGGER.debug("ProductServiceImpl:updateProduct response payload {} " + Mapper.mapToJsonString(product));
+	        productRequest = ProductHelper.setProductDetailsForRequest(newProduct);
+	        LOGGER.debug("ProductServiceImpl:updateProduct Response {} " + Mapper.mapToJsonString(product));
+		}
+		return productRequest;
+	}
+
+	@Override
+	public String deleteByProductId(Integer productId) {
+		LOGGER.info("ProductServiceImpl:deleteByProductId execution started....");
+		if( productRepository.findById(productId).isPresent()) {
+			productRepository.deleteById(productId);
+			LOGGER.debug("ProductServiceImpl:deleteByProductId Request payload {} " + productId);
+		}
+		else {
+			LOGGER.warn("ProductServiceImpl:deleteByProductId Product cannot be deleted for given product Id : " + productId);
+			throw new ProductIsNotPresent("Product cannot be deleted for given product Id : " + productId);
+		}
+		return "Product is deleted for given productId : " + productId;
+	}
+
+	@Override
+	public String deleteAllProducts() {
+		LOGGER.info("ProductServiceImpl:deleteAllProducts execution started....");
+		List<Product> products = productRepository.findAll();
+		if(!products.isEmpty()) {
+			productRepository.deleteAll();
+			LOGGER.warn("ProductServiceImpl:deleteAllProducts All Product are Deleted!!! payload {} " + products);
+		}
+		else {
+			LOGGER.warn("ProductServiceImpl:deleteAllProducts Product cannot be deleted!!!!: " + products);
+			throw new ProductIsEmptyException("Product cannot be deleted!!!");
+		}
+		return "All Product is deleted!!!";
+	}
 }
+

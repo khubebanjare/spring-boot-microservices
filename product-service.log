@@ -1,0 +1,167 @@
+"2023-06-13 18:36:01 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - Starting ProductServiceApplication using Java 17.0.6 with PID 11424 (D:\khube\project\practice\product-service\target\classes started by khubeb in D:\khube\project\practice\product-service)
+""2023-06-13 18:36:01 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - No active profile set, falling back to 1 default profile: "default"
+""2023-06-13 18:36:01 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+""2023-06-13 18:36:01 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+""2023-06-13 18:36:02 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2023-06-13 18:36:02 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 98 ms. Found 1 JPA repository interfaces.
+""2023-06-13 18:36:03 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=1e776074-bfe4-33d8-b613-a0144765e640
+""2023-06-13 18:36:04 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8087 (http)
+""2023-06-13 18:36:04 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+""2023-06-13 18:36:04 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+""2023-06-13 18:36:04 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+""2023-06-13 18:36:04 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2023-06-13 18:36:04 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+""2023-06-13 18:36:04 [restartedMain] INFO  o.a.c.c.C.[.[.[/product-service] - Initializing Spring embedded WebApplicationContext
+""2023-06-13 18:36:04 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2941 ms
+""2023-06-13 18:36:04 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2023-06-13 18:36:04 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@605af545
+""2023-06-13 18:36:04 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2023-06-13 18:36:04 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/productdb'
+""2023-06-13 18:36:05 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2023-06-13 18:36:05 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.2.Final
+""2023-06-13 18:36:05 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+""2023-06-13 18:36:05 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+""2023-06-13 18:36:05 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+""2023-06-13 18:36:05 [restartedMain] INFO  org.hibernate.orm.dialect - HHH035001: Using dialect: org.hibernate.dialect.MySQL8Dialect, version: 8.0
+""2023-06-13 18:36:05 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+""2023-06-13 18:36:06 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+""2023-06-13 18:36:07 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2023-06-13 18:36:07 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2023-06-13 18:36:07 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2023-06-13 18:36:09 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+""2023-06-13 18:36:10 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8087 (http) with context path '/product-service'
+""2023-06-13 18:36:10 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - Started ProductServiceApplication in 10.325 seconds (process running for 12.437)
+""2023-06-13 18:36:33 [RMI TCP Connection(10)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+""2023-06-13 18:36:33 [RMI TCP Connection(10)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+""2023-06-13 18:36:33 [RMI TCP Connection(10)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2023-06-13 18:36:33 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2023-06-13 18:36:33 [RMI TCP Connection(10)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2023-06-13 18:36:38 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - Starting ProductServiceApplication using Java 17.0.6 with PID 44892 (D:\khube\project\practice\product-service\target\classes started by khubeb in D:\khube\project\practice\product-service)
+""2023-06-13 18:36:38 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - No active profile set, falling back to 1 default profile: "default"
+""2023-06-13 18:36:38 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+""2023-06-13 18:36:38 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+""2023-06-13 18:36:39 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2023-06-13 18:36:39 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 106 ms. Found 1 JPA repository interfaces.
+""2023-06-13 18:36:40 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=1e776074-bfe4-33d8-b613-a0144765e640
+""2023-06-13 18:36:41 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8087 (http)
+""2023-06-13 18:36:41 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+""2023-06-13 18:36:41 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+""2023-06-13 18:36:41 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+""2023-06-13 18:36:41 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2023-06-13 18:36:41 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+""2023-06-13 18:36:41 [restartedMain] INFO  o.a.c.c.C.[.[.[/product-service] - Initializing Spring embedded WebApplicationContext
+""2023-06-13 18:36:41 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3065 ms
+""2023-06-13 18:36:41 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2023-06-13 18:36:42 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@8df89c9
+""2023-06-13 18:36:42 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2023-06-13 18:36:42 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/productdb'
+""2023-06-13 18:36:42 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2023-06-13 18:36:42 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.2.Final
+""2023-06-13 18:36:42 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+""2023-06-13 18:36:42 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+""2023-06-13 18:36:43 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+""2023-06-13 18:36:43 [restartedMain] INFO  org.hibernate.orm.dialect - HHH035001: Using dialect: org.hibernate.dialect.MySQL8Dialect, version: 8.0
+""2023-06-13 18:36:43 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+""2023-06-13 18:36:43 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+""2023-06-13 18:36:44 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2023-06-13 18:36:44 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2023-06-13 18:36:45 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2023-06-13 18:36:47 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+""2023-06-13 18:36:47 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8087 (http) with context path '/product-service'
+""2023-06-13 18:36:47 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - Started ProductServiceApplication in 10.562 seconds (process running for 12.372)
+""2023-06-13 18:37:01 [http-nio-8087-exec-1] INFO  o.a.c.c.C.[.[.[/product-service] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2023-06-13 18:37:01 [http-nio-8087-exec-1] INFO  c.k.m.p.controller.ProductController - ProductServiceImpl:getProducts request from client {} 102
+""2023-06-13 18:37:01 [http-nio-8087-exec-1] INFO  c.k.m.p.s.impl.ProductServiceImpl - ProductServiceImpl:getProductById execution started....
+""2023-06-13 18:40:53 [RMI TCP Connection(14)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+""2023-06-13 18:40:53 [RMI TCP Connection(14)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+""2023-06-13 18:40:53 [RMI TCP Connection(14)-127.0.0.1] INFO  o.a.c.c.C.[.[.[/product-service] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+""2023-06-13 18:40:53 [RMI TCP Connection(14)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2023-06-13 18:40:53 [RMI TCP Connection(14)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2023-06-13 18:40:53 [RMI TCP Connection(14)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2023-06-13 18:41:00 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - Starting ProductServiceApplication using Java 17.0.6 with PID 14640 (D:\khube\project\practice\product-service\target\classes started by khubeb in D:\khube\project\practice\product-service)
+""2023-06-13 18:41:00 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - No active profile set, falling back to 1 default profile: "default"
+""2023-06-13 18:41:00 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+""2023-06-13 18:41:00 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+""2023-06-13 18:41:01 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2023-06-13 18:41:01 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 99 ms. Found 1 JPA repository interfaces.
+""2023-06-13 18:41:02 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=1e776074-bfe4-33d8-b613-a0144765e640
+""2023-06-13 18:41:03 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8087 (http)
+""2023-06-13 18:41:03 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+""2023-06-13 18:41:03 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+""2023-06-13 18:41:03 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+""2023-06-13 18:41:03 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2023-06-13 18:41:03 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+""2023-06-13 18:41:03 [restartedMain] INFO  o.a.c.c.C.[.[.[/product-service] - Initializing Spring embedded WebApplicationContext
+""2023-06-13 18:41:03 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3029 ms
+""2023-06-13 18:41:03 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2023-06-13 18:41:03 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7af7db45
+""2023-06-13 18:41:03 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2023-06-13 18:41:03 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/productdb'
+""2023-06-13 18:41:04 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2023-06-13 18:41:04 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.2.Final
+""2023-06-13 18:41:04 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+""2023-06-13 18:41:04 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+""2023-06-13 18:41:05 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+""2023-06-13 18:41:05 [restartedMain] INFO  org.hibernate.orm.dialect - HHH035001: Using dialect: org.hibernate.dialect.MySQL8Dialect, version: 8.0
+""2023-06-13 18:41:05 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+""2023-06-13 18:41:05 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+""2023-06-13 18:41:06 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2023-06-13 18:41:06 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2023-06-13 18:41:07 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2023-06-13 18:41:08 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+""2023-06-13 18:41:09 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8087 (http) with context path '/product-service'
+""2023-06-13 18:41:09 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - Started ProductServiceApplication in 10.585 seconds (process running for 12.722)
+""2023-06-13 18:41:11 [http-nio-8087-exec-1] INFO  o.a.c.c.C.[.[.[/product-service] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2023-06-13 18:41:11 [http-nio-8087-exec-1] INFO  c.k.m.p.controller.ProductController - ProductServiceImpl:getProducts request from client {} 102
+""2023-06-13 18:41:11 [http-nio-8087-exec-1] INFO  c.k.m.p.s.impl.ProductServiceImpl - ProductServiceImpl:getProductById execution started....
+""2023-06-13 18:42:10 [RMI TCP Connection(9)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+""2023-06-13 18:42:10 [RMI TCP Connection(9)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+""2023-06-13 18:42:10 [RMI TCP Connection(9)-127.0.0.1] INFO  o.a.c.c.C.[.[.[/product-service] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+""2023-06-13 18:42:10 [RMI TCP Connection(9)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2023-06-13 18:42:10 [RMI TCP Connection(9)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2023-06-13 18:42:10 [RMI TCP Connection(9)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2023-06-13 18:46:01 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - Starting ProductServiceApplication using Java 17.0.6 with PID 7504 (D:\khube\project\practice\product-service\target\classes started by khubeb in D:\khube\project\practice\product-service)
+""2023-06-13 18:46:01 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - No active profile set, falling back to 1 default profile: "default"
+""2023-06-13 18:46:01 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+""2023-06-13 18:46:01 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+""2023-06-13 18:46:03 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2023-06-13 18:46:03 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 98 ms. Found 1 JPA repository interfaces.
+""2023-06-13 18:46:03 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=1e776074-bfe4-33d8-b613-a0144765e640
+""2023-06-13 18:46:04 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8087 (http)
+""2023-06-13 18:46:04 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - An older version [1.2.36] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.1]
+""2023-06-13 18:46:04 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.36] using APR version [1.7.2].
+""2023-06-13 18:46:04 [restartedMain] INFO  o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1t  7 Feb 2023]
+""2023-06-13 18:46:04 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2023-06-13 18:46:04 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.8]
+""2023-06-13 18:46:04 [restartedMain] INFO  o.a.c.c.C.[.[.[/product-service] - Initializing Spring embedded WebApplicationContext
+""2023-06-13 18:46:04 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2589 ms
+""2023-06-13 18:46:04 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2023-06-13 18:46:05 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@626bf48b
+""2023-06-13 18:46:05 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2023-06-13 18:46:05 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/productdb'
+""2023-06-13 18:46:05 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2023-06-13 18:46:05 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.2.Final
+""2023-06-13 18:46:05 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+""2023-06-13 18:46:05 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+""2023-06-13 18:46:05 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+""2023-06-13 18:46:06 [restartedMain] INFO  org.hibernate.orm.dialect - HHH035001: Using dialect: org.hibernate.dialect.MySQL8Dialect, version: 8.0
+""2023-06-13 18:46:06 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+""2023-06-13 18:46:06 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+""2023-06-13 18:46:07 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2023-06-13 18:46:07 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2023-06-13 18:46:07 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2023-06-13 18:46:09 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+""2023-06-13 18:46:09 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8087 (http) with context path '/product-service'
+""2023-06-13 18:46:10 [restartedMain] INFO  c.k.m.p.ProductServiceApplication - Started ProductServiceApplication in 10.156 seconds (process running for 11.967)
+""2023-06-13 18:46:16 [http-nio-8087-exec-1] INFO  o.a.c.c.C.[.[.[/product-service] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2023-06-13 18:46:16 [http-nio-8087-exec-1] INFO  c.k.m.p.controller.ProductController - ProductServiceImpl:getProducts request from client {} 102
+""2023-06-13 18:46:16 [http-nio-8087-exec-1] INFO  c.k.m.p.s.impl.ProductServiceImpl - ProductServiceImpl:getProductById execution started....
+""2023-06-13 18:46:39 [http-nio-8087-exec-6] INFO  c.k.m.p.controller.ProductController - ProductServiceImpl:getProducts request from client {} 102
+""2023-06-13 18:46:39 [http-nio-8087-exec-6] INFO  c.k.m.p.s.impl.ProductServiceImpl - ProductServiceImpl:getProductById execution started....
+""2023-06-13 18:47:08 [RMI TCP Connection(9)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+""2023-06-13 18:47:08 [RMI TCP Connection(9)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+""2023-06-13 18:47:08 [RMI TCP Connection(9)-127.0.0.1] INFO  o.a.c.c.C.[.[.[/product-service] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+""2023-06-13 18:47:08 [RMI TCP Connection(9)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2023-06-13 18:47:08 [RMI TCP Connection(9)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2023-06-13 18:47:08 [RMI TCP Connection(9)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+"
