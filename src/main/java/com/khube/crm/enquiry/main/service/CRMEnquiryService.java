@@ -17,4 +17,6 @@ public interface CRMEnquiryService {
     public Optional<EnquiryResponse> getEnquiryById(Integer enquiryId);
     
     public List<EnquiryResponse> findByProductIdAndDateOfEnquiry(Integer productId, LocalDate dateOfEnquiry);
+    
+    public List<EnquiryResponse> findByProductId(Integer productId);
 }

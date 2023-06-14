@@ -21,11 +21,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.khube.crm.enquiry.main.entity.Enquiry;
 import com.khube.crm.enquiry.main.request.EnquiryRequest;
 import com.khube.crm.enquiry.main.response.EnquiryResponse;
+import com.khube.crm.enquiry.main.response.error.EnquiryErrorResponse;
 import com.khube.crm.enquiry.main.service.CRMEnquiryService;
 import com.khube.crm.enquiry.main.util.Mapper;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/enquiry/api")
+@Tag(name = "CRMEnquiry", description = "This Controller is used to create, search all Enquiries, based on enquiry and product, and based on some condition It will return details of enquiries.")
 public class CRMEnquiryController {
 
 	private static final Logger LOGGER = LogManager.getLogger(CRMEnquiryController.class);
@@ -33,6 +42,15 @@ public class CRMEnquiryController {
     @Autowired
     private CRMEnquiryService crmEnquiryService;
 
+    @Operation(summary = "Create a new enquiry", description = "This api is used to create an Enquiry for a Product.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "201", content = {
+                    @Content(schema = @Schema(implementation = EnquiryRequest.class), mediaType = "application/json")
+        }),
+        @ApiResponse(responseCode = "500", content = {
+                    @Content(schema = @Schema(implementation = EnquiryErrorResponse.class), mediaType = "application/json")
+        }),
+    })
     @PostMapping(value = "/enquiries")
     public ResponseEntity<EnquiryRequest> createProductEnquiry(@RequestBody Enquiry enquiry){
         EnquiryRequest enquiryRequest = crmEnquiryService.createProductEnquiry(enquiry);
@@ -55,10 +73,17 @@ public class CRMEnquiryController {
     }
     
     @GetMapping(value = "/enquiry")
-    public ResponseEntity<List<EnquiryResponse>> findEnquiryByProductIdAndDateOfEnquiry(
+    public ResponseEntity<List<EnquiryResponse>> findByProductId(
     											@RequestParam("productId") Integer productId, 
     											@RequestParam("dateOfEnquiry") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateOfEnquiry){
     	List<EnquiryResponse> enquiryResponses = crmEnquiryService.findByProductIdAndDateOfEnquiry(productId, dateOfEnquiry);
+    	LOGGER.debug("CRMEnquiryController:findEnquiryByProductIdAndDateOfEnquiry Response {} " + Mapper.mapToJsonString(enquiryResponses));
+    	return new ResponseEntity<List<EnquiryResponse>>(enquiryResponses, HttpStatus.OK);
+    }
+    
+    @GetMapping(value = "/enquiries/products/{productId}")
+    public ResponseEntity<List<EnquiryResponse>> findEnquiryByProductIdAndDateOfEnquiry(@PathVariable Integer productId){
+    	List<EnquiryResponse> enquiryResponses = crmEnquiryService.findByProductId(productId);
     	LOGGER.debug("CRMEnquiryController:findEnquiryByProductIdAndDateOfEnquiry Response {} " + Mapper.mapToJsonString(enquiryResponses));
     	return new ResponseEntity<List<EnquiryResponse>>(enquiryResponses, HttpStatus.OK);
     }

@@ -1,8 +1,11 @@
 package com.khube.crm.enquiry.main.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,14 +15,20 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "enquiry_tab")
-public class Enquiry {
+public class Enquiry implements Serializable{
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer enquiryId;
     private String clientName;
     private Long clientMobileNumber;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd ")
     private LocalDate dateOfEnquiry;
     private Integer productId;
 

@@ -101,6 +101,25 @@ public class CRMEnquiryServiceImpl implements CRMEnquiryService {
 		return enquiryResponses;
 	}
 	
+	@Override
+	public List<EnquiryResponse> findByProductId(Integer productId) {
+		LOGGER.info("CRMEnquiryServiceImpl:findByProductId execution started...");
+		List<Enquiry> enquiries = enquiryRepository.findByProductId(productId);
+		List<EnquiryResponse> enquiryResponses = new ArrayList<EnquiryResponse>();
+              
+		if(!enquiries.isEmpty()){
+            enquiries.forEach(enquiry -> {
+            	getProductResponse(enquiry);
+                enquiryResponses.add(enquiryResponse);
+            });
+        }
+        else
+            throw new EnquiryNotFoundException("Enquiry Data not Found for given condition!!!!");
+		LOGGER.debug("CRMEnquiryServiceImpl:findByProductId Response {} " + Mapper.mapToJsonString(enquiryResponses));
+		return enquiryResponses;
+	}
+
+	
 	private void getProductResponse(Enquiry enquiry) {
 		enquiryResponse = EnquiryHelper.setEnquiryDetailsForResponse(enquiry);
         ProductResponse productResponse = productFeignClient.getProductById(enquiry.getProductId());
@@ -109,4 +128,5 @@ public class CRMEnquiryServiceImpl implements CRMEnquiryService {
         	enquiryResponse.setProductResponse(productResponse);
 	}
 
+	
 }
