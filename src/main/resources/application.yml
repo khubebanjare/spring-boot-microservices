@@ -1,0 +1,73 @@
+server:
+  port: 3333
+
+eureka:
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: api-gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: address-service
+          uri: lb://ADDRESS-SERVICE
+          predicates:
+            - Path=/address-service/address/api/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: address-service
+                fallbackuri: forward:/addressServiceFallBack
+
+
+        - id: employee-service
+          uri: lb://EMPLOYEE-SERVICE
+          predicates:
+            - Path=/employee-service/employee/api/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: employee-service
+                fallbackuri: forward:/employeeServiceFallBack
+
+        - id: crmenquiry-service
+          uri: lb://CRMENQUIRY-SERVICE
+          predicates:
+            - Path=/crmenquiry-service/enquiry/api/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: crmenquiry-service
+                fallbackuri: forward:/crmenquiryServiceFallBack
+
+
+        - id: product-service
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/product-service/product/api/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: product-service
+                fallbackuri: forward:/productServiceFallBack
+
+#Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream, health, info
+
+#Hystrix Configuration
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
