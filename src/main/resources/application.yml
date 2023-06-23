@@ -1,20 +1,85 @@
-springdoc:
-  api-docs:
-    enabled: true
-  swagger-ui:
-    enabled: true
+appender:
+  console:
+    layout:
+      pattern: '%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n'
+      type: PatternLayout
+    name: STDOUT
+    type: Console
+appenders: console
 
-app:
-  name: Product Application
-  api:
-    title: Product Service APIs
-    version: 1.0.0
-    description: Product Service Application APIs description
-    base-package: com.khube.main.product.controller
-    contact-name: micrograps
-    contact-email: info.khube@gmail.com
-    controllerName: Product Controller
-    groupName: Product Service
-    controllerDescription: This controller is used for create, get by id and get all for Product Response.
-    swagger:
-      enable: true
+filter:
+  threshold:
+    level: debug
+    type: ThresholdFilter
+filters: threshold
+logging:
+  file:
+    name: //product-service.log
+    path: //D://khube//project//logs//product-service
+  level:
+    com:
+      hsc:
+        adauth:
+          '*': DEBUG
+    org:
+      springframework:
+        web: ERROR
+  pattern:
+    file: '"%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"'
+
+name: PropertiesConfig
+rootLogger:
+  appenderRef:
+    stdout:
+      ref: STDOUT
+  appenderRefs: stdout
+  level: debug
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*' 
+  
+server:
+  port: 8087
+  
+  servlet:
+    context-path: /product-service
+
+spring:
+  application:
+    name: product-service
+    
+  config:
+    import: configserver:http://localhost:9999
+  
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111
+
+  cloud:
+    client:
+      hostname: ${ci2.server.host}
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/productdb
+    username: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format-sql: true
+    show-sql: true
+    
+status: 'error   #The level of internal Log4j events that should be logged to the
+  console.'

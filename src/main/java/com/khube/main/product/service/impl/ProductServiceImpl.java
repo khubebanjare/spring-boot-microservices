@@ -72,6 +72,8 @@ public class ProductServiceImpl implements ProductService {
     // hello new line added on this project
     @Override
     public Optional<ProductResponse> getProductById(Integer productId) {
+    	System.out.println("Calling Product-Service for Product by Product Id : " + productId);
+    	
         LOGGER.info("ProductServiceImpl:getProductById execution started....");
         Product existProduct = productRepository.findById(productId)
                                 .orElseThrow(
