@@ -1,0 +1,25 @@
+server:
+  port: 9090
+
+eureka:
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: hystrix-dashboard
+
+#Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: '*'
+
+  command:
+    default:
+      execution.isolation.thread.timeoutInMilliseconds: 5000
