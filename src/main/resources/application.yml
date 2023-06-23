@@ -1,0 +1,94 @@
+appender:
+  console:
+    layout:
+      pattern: '%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n'
+      type: PatternLayout
+    name: STDOUT
+    type: Console
+appenders: console
+
+filter:
+  threshold:
+    level: debug
+    type: ThresholdFilter
+filters: threshold
+logging:
+  file:
+    name: //crmenquiry-service.log
+    path: //D://khube//project//logs//crmenquiry-service
+  level:
+    com:
+      hsc:
+        adauth:
+          '*': DEBUG
+    org:
+      springframework:
+        web: ERROR
+  pattern:
+    file: '"%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"'
+ 
+        
+name: PropertiesConfig
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+product:
+  service:
+    path: /product-service/product/api
+rootLogger:
+  appenderRef:
+    stdout:
+      ref: STDOUT
+  appenderRefs: stdout
+  level: debug
+  
+server:
+  port: 8088
+  
+  servlet:
+    context-path: /crmenquiry-service
+
+spring:
+  application:
+    name: crmenquiry-service
+ 
+  config:
+    import: configserver:http://localhost:9999
+ 
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111
+ 
+  cloud:
+    client:
+      hostname: ${ci2.server.host}
+ 
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/product_enquiry
+    username: root
+ 
+  jackson:
+    date-format: yyyy-MM-dd
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+ 
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format-sql: true
+    show-sql: true
+    
+status: 'error   #The level of internal Log4j events that should be logged to the console.'

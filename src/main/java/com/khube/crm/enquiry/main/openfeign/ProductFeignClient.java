@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.khube.crm.enquiry.main.response.ProductResponse;
 
-@FeignClient(name = "product-service", url = "${product.service.base.url}")
+@FeignClient(name = "PRODUCT-SERVICE", path = "${product.service.path}")
 public interface ProductFeignClient {
     
 	@GetMapping(value = "/products/{productId}")

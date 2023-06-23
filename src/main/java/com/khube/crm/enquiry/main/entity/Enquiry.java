@@ -27,8 +27,6 @@ public class Enquiry implements Serializable{
     private Integer enquiryId;
     private String clientName;
     private Long clientMobileNumber;
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd ")
     private LocalDate dateOfEnquiry;
     private Integer productId;
 

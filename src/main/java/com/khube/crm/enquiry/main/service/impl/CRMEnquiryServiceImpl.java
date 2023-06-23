@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.khube.crm.enquiry.main.exception.EnquiryAlreadyExistsForProductException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +47,19 @@ public class CRMEnquiryServiceImpl implements CRMEnquiryService {
         if(enquiryRepository.existsById(enquiry.getEnquiryId()))
         	throw new EnquiryAlreadyPresentException("Enquiry Data is already present...");
         LOGGER.debug("CRMEnquiryServiceImpl:createProductEnquiry Request payload {} " + Mapper.mapToJsonString(enquiry));
-    	Enquiry newEnquiry = enquiryRepository.save(enquiry);
-        enquiryRequest = EnquiryHelper.setEnquiryDetailsForRequest(newEnquiry);
-        LOGGER.debug("CRMEnquiryServiceImpl:createProductEnquiry Response {} " + Mapper.mapToJsonString(enquiryRequest));
+       
+        List<EnquiryResponse> enquiryResponses = getEnquiries();
+        LOGGER.debug("CRMEnquiryServiceImpl:getEnquiries Response {} " + Mapper.mapToJsonString(enquiryResponses));
+        
+        for(EnquiryResponse enqquiryResponse : enquiryResponses) {
+        if(!(enqquiryResponse.getProductId().equals(enquiry.getProductId()) && enqquiryResponse.getClientName().equals(enquiry.getClientName()))) {
+            Enquiry newEnquiry = enquiryRepository.save(enquiry);
+            enquiryRequest = EnquiryHelper.setEnquiryDetailsForRequest(newEnquiry);
+            LOGGER.debug("CRMEnquiryServiceImpl:createProductEnquiry Response {} " + Mapper.mapToJsonString(enquiryRequest));
+        }
+        else
+            throw new EnquiryAlreadyExistsForProductException("Enquiry Already Exists for given condition");
+        }
         return enquiryRequest;
     }
 
@@ -114,7 +125,7 @@ public class CRMEnquiryServiceImpl implements CRMEnquiryService {
             });
         }
         else
-            throw new EnquiryNotFoundException("Enquiry Data not Found for given condition!!!!");
+            throw new EnquiryNotFoundException("Enquiry Data not Found for Product Id : " + productId);
 		LOGGER.debug("CRMEnquiryServiceImpl:findByProductId Response {} " + Mapper.mapToJsonString(enquiryResponses));
 		return enquiryResponses;
 	}

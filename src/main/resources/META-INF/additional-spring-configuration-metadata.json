@@ -33,5 +33,20 @@
     "name": "product.service.base.url",
     "type": "java.lang.String",
     "description": "A description for 'product.service.base.url'"
+  },
+  {
+    "name": "product.service.path",
+    "type": "java.lang.String",
+    "description": "A description for 'product.service.path'"
+  },
+  {
+    "name": "product.service.path",
+    "type": "java.lang.String",
+    "description": "A description for 'product.service.path'"
+  },
+  {
+    "name": "spring.boot.admin.client.url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.boot.admin.client.url'"
   }
 ]}
