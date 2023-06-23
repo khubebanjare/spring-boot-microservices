@@ -1,13 +1,13 @@
 server:
   port: 3333
 
-eureka:
-  instance:
-    hostname: localhost
-
 spring:
   application:
     name: api-gateway-service
+  
+  config:
+    import: configserver:http://localhost:9999
+
   cloud:
     gateway:
       discovery:
@@ -15,7 +15,7 @@ spring:
           enabled: true
       routes:
         - id: address-service
-          uri: lb://ADDRESS-SERVICE
+          uri: lb://address-service
           predicates:
             - Path=/address-service/address/api/**
           filters:
@@ -26,7 +26,7 @@ spring:
 
 
         - id: employee-service
-          uri: lb://EMPLOYEE-SERVICE
+          uri: lb://employee-service
           predicates:
             - Path=/employee-service/employee/api/**
           filters:
@@ -36,7 +36,7 @@ spring:
                 fallbackuri: forward:/employeeServiceFallBack
 
         - id: crmenquiry-service
-          uri: lb://CRMENQUIRY-SERVICE
+          uri: lb://crmenquiry-service
           predicates:
             - Path=/crmenquiry-service/enquiry/api/**
           filters:
@@ -47,7 +47,7 @@ spring:
 
 
         - id: product-service
-          uri: lb://PRODUCT-SERVICE
+          uri: lb://product-service
           predicates:
             - Path=/product-service/product/api/**
           filters:
@@ -71,3 +71,4 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 5000
+            
